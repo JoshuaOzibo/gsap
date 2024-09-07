@@ -4,7 +4,10 @@ import Image from "./components/Image";
 import NewHero from "./components/NewHero";
 import Scroll from "./components/Scroll";
 import Text from "./components/Text";
-
+import TextLearn from './components/TextsLearn'
+import Hero from "./containerTwo/Hero";
+import LearnThreeD from "./containerTwo/LearnThreeD";
+import Navbar from "./containerTwo/Navbar";
 
 function App() {
   return (
@@ -14,7 +17,10 @@ function App() {
       {/* <HeroOne /> */}
       {/* <Scroll /> */}
       {/* <Box /> */}
-      <NewHero />
+      {/* <NewHero /> */}
+      {/* <TextLearn /> */}
+      <Hero />
+      <LearnThreeD />
     </div>
   );
 }
