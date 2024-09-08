@@ -1,9 +1,6 @@
 import React from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// gsap.registerPlugin(ScrollTrigger);
 
 const LearnThreeD = () => {
   useGSAP(() => {
@@ -26,12 +23,12 @@ const LearnThreeD = () => {
         each: 0.09,
       },
     })
-    tl.from("#RedShiftText", {
+    tl.from(["#RedShiftText", "#image"], {
       scrollTrigger: {
         trigger: "#TextOne",
         start: "-=2100",
         scrub: true,
-        markers: true
+        // markers: true
       },
       y: 400,
       x: 20,
@@ -40,6 +37,26 @@ const LearnThreeD = () => {
         each: 0.002,
       },
     });
+    tl.to( "#image", {
+      scrollTrigger: {
+        trigger: "#TextOne",
+        scrub: true,
+        markers: true
+      },
+      
+      scale: 0.0003,
+      duration: 0.5,
+      duration: 3,
+      ease: "bounce.out",
+      css: {
+        translateY: "-=200",
+        borderRadius: "+=150"
+      }
+    });
+
+    // tl.from("#image", {
+    //   st
+    // })
 
   }, []);
 
@@ -71,14 +88,15 @@ const LearnThreeD = () => {
 
               <p>Get a free patreon tutorial sample</p>
             </div>
-            <div className="flex relative right-0 w-[45%] bg-slate-300">
+            <div className="flex relative right-0 w-[45%]">
               <div className="">
                 <img
+                id="image"
                   className="scale-[0.4] -left-[160px] -top-[80px] absolute"
                   src="https://www.datocms-assets.com/92457/1694943431-patreon-hero-small.jpg?fit=max&fm=webp&h=3000&w=2000"
                   alt="img"
                 />
-                <div id="TextContainerOne" className=" absolute overflow-hidden border-b-5 border-red-800 mt-[70px]">
+                <div id="TextContainerOne" className=" absolute overflow-hidden border-b-5 mt-[70px]">
                 <h1 id="RedShiftText" className="text-8xl font-medium">
                   Redshift
                 </h1>

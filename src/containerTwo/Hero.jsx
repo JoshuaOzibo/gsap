@@ -1,12 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import introVid from './assets/introVideo.mp4'
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "./Navbar";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
+  const [showNav, setShowNav] = useState(false)
 
     useGSAP(() => {
         let tl = gsap.timeline();
@@ -40,8 +41,6 @@ const Hero = () => {
               if (parseFloat(currentY) <= -39) {
                 gsap.set("#WelcomeMessage", { visibility: "hidden" });
               }
-      
-              console.log(`Current Y position: ${currentY}`);
             }
         });
 
@@ -56,12 +55,36 @@ const Hero = () => {
           }
         })
 
+        tl.to("#nav", {
+          scrollTrigger: {
+            duration: 1,
+            opacity: 0,
+            scrub: true
+          },
+          css: {visibility: "visible", background: "c4c4c4"},
+          y: -100,
+          onStart: () => setShowNav(true),
+      })
+
+        tl.from("#hideNav", {
+          scrollTrigger: {
+            trigger: "#hideNav",
+            duration: 1,
+            opacity: 0,
+            scrub: true
+          },
+          onStart: () => setShowNav(true)
+      })
+
     }, [])
   return (
     <div id="HeroContainer" className="w-full h-screen relative">
-        <div id="Navbar" className="z-20">
+        {/* {showNav && <div id="nav" className="z-20 invisible">
         <Navbar />
-        </div>
+        </div>} */}
+        {<div id="hideNav" className="z-20">
+        <Navbar showNav={showNav} />
+        </div>}
       <video
         className="absolute w-full h-full object-cover"
         autoPlay

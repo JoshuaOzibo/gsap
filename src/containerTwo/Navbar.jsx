@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger)
 
-const Navbar = () => {
+const Navbar = ({showNav}) => {
+
     useGSAP(() => {
         let tl = gsap.timeline();
         tl.from("#navText", {
@@ -22,12 +23,13 @@ const Navbar = () => {
             scale: 0.9,
             y: 50,
         });
-
         
 
     }, []);
+
+    console.log(showNav)
   return (
-    <nav className='w-full z-30 overflow-hidden fixed h-[60px] flex bg-inherit justify-center'>
+    <nav id='nav' className='w-full bg-red-400 z-30 overflow-hidden fixed h-[60px] flex bg-inherit justify-center'>
         <div className=' flex text-white justify-between items-center w-[90%]'>
         <ul id='navText' className='flex text-xs font-medium space-x-3 justify-center items-center'>
             <li>Design</li>
@@ -51,16 +53,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
-{/*
-    Design
-
-Menu
- Residences
-Penthouses
-Amenities
-53 West 53
-Neighborhood
-Gallery
-Availability
-Inquire */}
