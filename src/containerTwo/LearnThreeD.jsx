@@ -41,7 +41,7 @@ const LearnThreeD = () => {
       scrollTrigger: {
         trigger: "#TextOne",
         scrub: true,
-        markers: true
+        // markers: true
       },
       
       scale: 0.0003,
